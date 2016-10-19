@@ -86,7 +86,12 @@ class WebhookHandler(webapp2.RequestHandler):
         if not text:
             logging.info('no text')
             return
+
         text = text.lower()
+        
+        if '@braldtbot' in text:
+            text = text.replace('@braldtbot', '')
+        
         def reply(msg=None, img=None):
             if msg:
                 resp = urllib2.urlopen(BASE_URL + 'sendMessage', urllib.urlencode({
@@ -129,6 +134,8 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply('JE KUNT DE BRALDT NIET HALTEN')
             elif text == '/braldt':
                 reply('Is heel erg knap, en niet te halten.')
+            elif text == '/devs':
+                reply ('Gemaakt door @braldt met hulp van @notinecrafter. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
         # CUSTOMIZE FROM HERE
 
         elif 'heineken' in text:
