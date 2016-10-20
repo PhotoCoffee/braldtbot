@@ -138,13 +138,13 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
         # CUSTOMIZE FROM HERE
 
-        elif 'heineken' in text:
+        elif ' heineken'in text or 'heineken ' in text or text == 'heineken':
             reply('Heineken is paardenzeik.')
-        elif 'bavaria' in text:
+        elif ' bavaria'in text or 'bavaria ' in text or text == 'bavaria':
             reply('Bavaria is slootwater.')
-        elif 'amstel' in text:
+        elif ' amstel'in text or 'amstel ' in text or text == 'amstel':
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
-        elif 'brand' in text:
+        elif ' brand'in text or 'brand ' in text or text == 'brand':
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
         else:
             if getEnabled(chat_id):
