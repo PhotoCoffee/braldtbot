@@ -146,7 +146,7 @@ class WebhookHandler(webapp2.RequestHandler):
             reply('Bavaria is slootwater.')
         elif ' amstel'in text or 'amstel ' in text or text == 'amstel':
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
-        elif ' brand'in text or 'brand ' in text or text == 'brand':
+        elif (' brand' in text or 'brand ' in text or text == 'brand') and not ('hillebrand' in text):
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
 
         else:
