@@ -138,6 +138,8 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
+            elif text == '/schouderophaal' or text == '/shrug':
+                reply ('¯\\_(ツ)_/¯')
 
         # in text
         elif ' heineken'in text or 'heineken ' in text or text == 'heineken':
