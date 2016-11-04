@@ -149,7 +149,7 @@ class WebhookHandler(webapp2.RequestHandler):
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
         elif text == '/schouderophaal' or '/schouderophaal' in text or text == '/shrug' or '/shrug' in text:
 			    reply (u'¯\_(ツ)_/¯')
-        if '/s 'in text or ' /s' in text or text == '/s':
+        elif '/s 'in text or ' /s' in text or text == '/s':
             reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
 
         else:
