@@ -134,7 +134,7 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/braldt':
                 reply('Is heel erg knap, en niet te halten.')
             elif text == '/devs':
-                reply ('Gemaakt door @braldt met hulp van @notinecrafter. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
+                reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
 
