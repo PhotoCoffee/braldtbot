@@ -5,6 +5,7 @@ import logging
 import random
 import urllib
 import urllib2
+import re
 
 # for sending images
 from PIL import Image
@@ -114,13 +115,8 @@ class WebhookHandler(webapp2.RequestHandler):
 
             logging.info('send response:')
             logging.info(resp)
-        #Commandos	
-        if text == '/schouderophaal' or '/schouderophaal' in text or text == '/shrug' or '/shrug' in text:
-            reply (u'¯\_(ツ)_/¯')
-        elif '/s 'in text or ' /s' in text or text == '/s':
-            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
-			
-        elif text.startswith('/'):
+        #Commandos				
+        if text.startswith('/'):
             if text == '/start':
                 reply('Hallo! Ik ben BraldtBot. Ik ben net zoals Braldt niet heel erg nuttig.')
                 setEnabled(chat_id, True)
@@ -143,14 +139,18 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Druk op F om uw respect te betuigen')
 
         # in text
-        elif ' heineken'in text or 'heineken ' in text or text == 'heineken':
+        elif re.match(r'(^|[^\w])heineken([^\w]|$)', text):
             reply('Heineken is paardenzeik.')
-        elif ' bavaria'in text or 'bavaria ' in text or text == 'bavaria':
+        elif re.match(r'(^|[^\w])bavaria([^\w]|$)', text):
             reply('Bavaria is slootwater.')
-        elif ' amstel'in text or 'amstel ' in text or text == 'amstel':
+        elif re.match(r'(^|[^\w])amstel([^\w]|$)', text):
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
-        elif (' brand' in text or 'brand ' in text or text == 'brand') and not ('hillebrand' in text):
+        elif re.match(r'(^|[^\w])brand([^\w]|$)', text):
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
+        elif re.match(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
+            reply (u'¯\_(ツ)_/¯')
+        elif re.match(r'(^|[^\w])\/s([^\w]|$)', text):
+            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
 
 
         else:
