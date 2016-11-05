@@ -139,17 +139,17 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Druk op F om uw respect te betuigen')
 
         # in text
-        elif re.match(r'(^|[^\w])heineken([^\w]|$)', text):
+        if re.search(r'(^|[^\w])heineken([^\w]|$)', text):
             reply('Heineken is paardenzeik.')
-        elif re.match(r'(^|[^\w])bavaria([^\w]|$)', text):
+        elif re.search(r'(^|[^\w])bavaria([^\w]|$)', text):
             reply('Bavaria is slootwater.')
-        elif re.match(r'(^|[^\w])amstel([^\w]|$)', text):
+        elif re.search(r'(^|[^\w])amstel([^\w]|$)', text):
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
-        elif re.match(r'(^|[^\w])brand([^\w]|$)', text):
+        elif re.search(r'(^|[^\w])brand([^\w]|$)', text):
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
-        elif re.match(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
+        elif re.search(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
             reply (u'¯\_(ツ)_/¯')
-        elif re.match(r'(^|[^\w])\/s([^\w]|$)', text):
+        elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
             reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
 
 
