@@ -115,8 +115,6 @@ class WebhookHandler(webapp2.RequestHandler):
             logging.info('send response:')
             logging.info(resp)
 
-        if '/s 'in text or ' /s' in text or text == '/s':
-            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         #Commandos		
         elif text.startswith('/'):
             if text == '/start':
@@ -139,8 +137,6 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
-            elif text == '/schouderophaal' or text == '/shrug':
-			    reply (u'¯\_(ツ)_/¯')
 
         # in text
         elif ' heineken'in text or 'heineken ' in text or text == 'heineken':
@@ -151,6 +147,10 @@ class WebhookHandler(webapp2.RequestHandler):
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
         elif (' brand' in text or 'brand ' in text or text == 'brand') and not ('hillebrand' in text):
 			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
+        elif text == '/schouderophaal' or '/schouderophaal' in text or text == '/shrug' or '/shrug' in text:
+			    reply (u'¯\_(ツ)_/¯')
+        elif '/s 'in text or ' /s' in text or text == '/s':
+            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
 
         else:
             if getEnabled(chat_id):
