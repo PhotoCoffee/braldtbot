@@ -119,10 +119,10 @@ class WebhookHandler(webapp2.RequestHandler):
         if text.startswith('/'):
             if text == '/start':
                 reply('Hallo! Ik ben BraldtBot. Ik ben net zoals Braldt niet heel erg nuttig.')
-                setEnabled(chat_id, True)
+#                setEnabled(chat_id, True)
             elif text == '/stop':
                 reply('Dag hoor!')
-                setEnabled(chat_id, False)
+#                setEnabled(chat_id, False)
             elif text == '/hjb':
                 reply('Luister, ik weet niet hoe ik dit het beste moet zeggen, dus ik doe het maar gewoon. Ik zou het erg waarderen als je nu heel snel je bek zou houden.')
             elif text == '/hjk':
@@ -151,7 +151,8 @@ class WebhookHandler(webapp2.RequestHandler):
             reply (u'¯\_(ツ)_/¯')
         elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
             reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
-
+        elif re.search(r'(^|[^\w])\/bots([^\w]|$)', text):
+            reply('BOTS KUNNEN BOTS NIET ZIEN')
 
         else:
             if getEnabled(chat_id):
