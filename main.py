@@ -132,7 +132,7 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/haltbraldt':
                 reply('JE KUNT DE BRALDT NIET HALTEN')
             elif text == '/braldt':
-                reply('Is heel erg knap, en niet te halten.')
+			reply ('Jongens, ik heb drie problemen:' + '\n' + '1) Ik ben alcoholist.' + '\n' + '2) Ik ben minderjarig.')
             elif text == '/devs':
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
@@ -146,7 +146,7 @@ class WebhookHandler(webapp2.RequestHandler):
         elif re.search(r'(^|[^\w])amstel([^\w]|$)', text):
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
         elif re.search(r'(^|[^\w])brand([^\w]|$)', text):
-			reply('Wat moet je doen als je Brand in de koelkast hebt? \n Brand eruit, Grolsch erin')
+			reply ('Wat moet je doen als je Brand in de koelkast hebt?' + '\n' + 'Brand eruit, Grolsch erin')
         elif re.search(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
             reply (u'¯\_(ツ)_/¯')
         elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
