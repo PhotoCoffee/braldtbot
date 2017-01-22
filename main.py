@@ -45,6 +45,29 @@ def getEnabled(chat_id):
 
 # ================================
 
+# ================================
+
+class EnableSarcasm(ndb.Model):
+    # key name: str(chat_id)
+    enabled = ndb.BooleanProperty(indexed=False, default=True)
+
+
+# ================================
+
+def setSarcasm(sarcasm, yes):
+    es = EnableSarcasm.get_or_insert(str(chat_id))
+    es.enabled = yes
+    es.put()
+
+def getSarcasm(chat_id):
+    es = EnableSarcasm.get_by_id(str(chat_id))
+    if es:
+        return es.enabled
+    return False
+
+
+# ================================
+
 class MeHandler(webapp2.RequestHandler):
     def get(self):
         urlfetch.set_default_fetch_deadline(60)
@@ -119,10 +142,10 @@ class WebhookHandler(webapp2.RequestHandler):
         if text.startswith('/'):
             if text == '/start':
                 reply('Hallo! Ik ben BraldtBot. Ik ben net zoals Braldt niet heel erg nuttig.')
-#                setEnabled(chat_id, True)
+                setEnabled(chat_id, True)
             elif text == '/stop':
                 reply('Dag hoor!')
-#                setEnabled(chat_id, False)
+                setEnabled(chat_id, False)
             elif text == '/hjb':
                 reply('Luister, ik weet niet hoe ik dit het beste moet zeggen, dus ik doe het maar gewoon. Ik zou het erg waarderen als je nu heel snel je bek zou houden.')
             elif text == '/hjk':
@@ -132,12 +155,18 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/haltbraldt':
                 reply('JE KUNT DE BRALDT NIET HALTEN')
             elif text == '/braldt':
-			reply ('Jongens, ik heb drie problemen:' + '\n' + '1) Ik ben alcoholist.' + '\n' + '2) Ik ben minderjarig.')
+			reply ('@braldt')
             elif text == '/devs':
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
-
+            elif text == '/senable':
+                reply('/S aan!')
+                setEnabled(sarcasm, True)
+            elif text == '/sdisable':
+                reply('/S uit!')
+                setEnabled(sarcasm, False)
+				
         # in text
         if re.search(r'(^|[^\w])heineken([^\w]|$)', text):
             reply('Heineken is paardenzeik.')
@@ -149,11 +178,10 @@ class WebhookHandler(webapp2.RequestHandler):
 			reply ('Wat moet je doen als je Brand in de koelkast hebt?' + '\n' + 'Brand eruit, Grolsch erin')
         elif re.search(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
             reply (u'¯\_(ツ)_/¯')
-        elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
-            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         elif re.search(r'(^|[^\w])\/bots([^\w]|$)', text):
             reply('BOTS KUNNEN BOTS NIET ZIEN')
-
+        elif getEnabled(sarcasm) and re.search(r'(^|[^\w])\/s([^\w]|$)', text):
+					reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         else:
             if getEnabled(chat_id):
                 reply('Lolwat')
