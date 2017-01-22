@@ -45,29 +45,6 @@ def getEnabled(chat_id):
 
 # ================================
 
-# ================================
-
-class EnableSarcasm(ndb.Model):
-    # key name: str(chat_id)
-    enabled = ndb.BooleanProperty(indexed=False, default=True)
-
-
-# ================================
-
-def setSarcasm(sarcasm, yes):
-    es = EnableSarcasm.get_or_insert(str(chat_id))
-    es.enabled = yes
-    es.put()
-
-def getSarcasm(chat_id):
-    es = EnableSarcasm.get_by_id(str(chat_id))
-    if es:
-        return es.enabled
-    return False
-
-
-# ================================
-
 class MeHandler(webapp2.RequestHandler):
     def get(self):
         urlfetch.set_default_fetch_deadline(60)
@@ -160,12 +137,6 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
-            elif text == '/senable':
-                reply('/S aan!')
-                setEnabled(sarcasm, True)
-            elif text == '/sdisable':
-                reply('/S uit!')
-                setEnabled(sarcasm, False)
 				
         # in text
         if re.search(r'(^|[^\w])heineken([^\w]|$)', text):
@@ -180,8 +151,8 @@ class WebhookHandler(webapp2.RequestHandler):
             reply (u'¯\_(ツ)_/¯')
         elif re.search(r'(^|[^\w])\/bots([^\w]|$)', text):
             reply('BOTS KUNNEN BOTS NIET ZIEN')
-        elif getEnabled(sarcasm) and re.search(r'(^|[^\w])\/s([^\w]|$)', text):
-					reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
+        elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
+			reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         else:
             if getEnabled(chat_id):
                 reply('Lolwat')
