@@ -149,8 +149,6 @@ class WebhookHandler(webapp2.RequestHandler):
 			reply ('Wat moet je doen als je Brand in de koelkast hebt?' + '\n' + 'Brand eruit, Grolsch erin')
         elif re.search(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
             reply (u'¯\_(ツ)_/¯')
-        elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
-            reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         elif re.search(r'(^|[^\w])\/bots([^\w]|$)', text):
             reply('BOTS KUNNEN BOTS NIET ZIEN')
 
