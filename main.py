@@ -132,26 +132,41 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/haltbraldt':
                 reply('JE KUNT DE BRALDT NIET HALTEN')
             elif text == '/braldt':
-			reply ('@braldt')
+			    reply ('@braldt')
             elif text == '/devs':
-                reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
+                reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun, maar geef hem niet de schuld als het mis gaat. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
+<<<<<<< HEAD
+=======
+		    elif text == '/bots':
+                reply('BOTS KUNNEN BOTS NIET ZIEN')
+            elif text == '/senable':
+                reply('/S aan!')
+                setEnabled(sarcasm, True)
+            elif text == '/sdisable':
+                reply('/S uit!')
+                setEnabled(sarcasm, False)
+>>>>>>> origin/master
 				
         # in text
-        if re.search(r'(^|[^\w])heineken([^\w]|$)', text):
+        if re.search(r'\bheineken\b)', text):
             reply('Heineken is paardenzeik.')
-        elif re.search(r'(^|[^\w])bavaria([^\w]|$)', text):
+        elif re.search(r'\bbavaria\b', text):
             reply('Bavaria is slootwater.')
-        elif re.search(r'(^|[^\w])amstel([^\w]|$)', text):
+        elif re.search(r'\bamstel\b', text):
 			reply('Amstel wordt letterlijk uit de Amstel gebotteld')
-        elif re.search(r'(^|[^\w])brand([^\w]|$)', text):
-			reply ('Wat moet je doen als je Brand in de koelkast hebt?' + '\n' + 'Brand eruit, Grolsch erin')
-        elif re.search(r'(^|[^\w])(\/schouderophaal|\/shrug)([^\w]|$)', text):
+        elif re.search(r'\bbrand\b', text):
+			reply ('Wat moet je doen als je Brand in de koelkast hebt?\nBrand eruit, Grolsch erin')
+        elif re.search(r'\b(\/schouderophaal|\/shrug)\b', text):
             reply (u'¯\_(ツ)_/¯')
+<<<<<<< HEAD
         elif re.search(r'(^|[^\w])\/bots([^\w]|$)', text):
             reply('BOTS KUNNEN BOTS NIET ZIEN')
         elif re.search(r'(^|[^\w])\/s([^\w]|$)', text):
+=======
+        elif getEnabled(sarcasm) and re.search(r'\b\/s\b', text):
+>>>>>>> origin/master
 			reply('DIT IS DUIDELIJK SARCASME TRAP DR NIET IN')
         else:
             if getEnabled(chat_id):
