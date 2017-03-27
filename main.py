@@ -137,6 +137,9 @@ class WebhookHandler(webapp2.RequestHandler):
                 reply ('Gemaakt door @braldt met hulp van @notinecrafter. Regex toegevoegd door @pingiun, maar geef hem niet de schuld als het mis gaat. Ik sta op GitHub: https://github.com/TheSociallyAwkwardKing/braldtbot')
             elif text == '/f':
                 reply ('Druk op F om uw respect te betuigen')
+            elif '/fixbot' in text:
+		handle = text.split(" ")[1]
+		reply('@'+handle+' fix bot')
 <<<<<<< HEAD
 =======
 		    elif text == '/bots':
