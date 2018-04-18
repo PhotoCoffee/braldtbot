@@ -130,7 +130,7 @@ class WebhookHandler(webapp2.RequestHandler):
             elif text == '/test':
                 reply('Niet stuk.')
             elif text == '/haltbraldt':
-                reply('JE KUNT DE BRALDT NIET HALTEN')
+                reply('BRALDT BEVINDT ZICH IN EEN PERMANENTE STAAT VAN GEHALT ZIJN')
             elif text == '/braldt':
 			    reply ('@braldt')
             elif text == '/devs':
